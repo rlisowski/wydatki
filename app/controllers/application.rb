@@ -67,7 +67,7 @@ class ApplicationController < ActionController::Base
     Digest::SHA1.hexdigest(pass+secure)
   end
   def random_color
-    array = %w( black  white maroon red purple fuchsia green lime olive yellow navy blue teal)
+    array = %w( black  red green blue)
     return array[rand(array.size)]
   end
   def random_register_image
