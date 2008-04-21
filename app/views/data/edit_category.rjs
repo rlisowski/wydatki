@@ -1,0 +1,3 @@
+page.replace_html  params[:category_id], :partial=>"share/edit_category", :locals => {:edit_category => @category}
+
+

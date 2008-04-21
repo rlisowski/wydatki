@@ -1,0 +1,42 @@
+<div id="data">
+  <div id="message">
+  </div>
+  <div>
+    <% b = Bill.find(params[:bill_id]) %>
+    Powrót do rachunków: <%= link_to_remote( b.name || b.spend_at, :url=> {:controller=>'view', :action=>'bills'})%>
+  </div>
+  <div id="table" class="table">
+    <table id="bills_header">
+      <tr>
+        <td id="lp">
+          Lp.
+        </td>
+        <td id="name">
+          Nazwa
+        </td>
+        <td id="name">
+          Kategoria
+        </td>
+        <td id="name">
+          Cena
+        </td>
+        <td id="name">
+          Ilość
+        </td>
+        <td id="name">
+          Suma
+        </td>
+        <td id="actions">
+          &nbsp;
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div id="table_data" class="table">
+    <% @count = @bill_parts.size%>
+    <% @bill_parts.each do |bill_part| -%>
+      <%= render :partial=>"share/bill_part_with_div", :object=>bill_part %>
+      <% @count-=1 %>
+    <% end -%>
+  </div>
+</div>

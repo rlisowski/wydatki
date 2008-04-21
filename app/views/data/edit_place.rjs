@@ -1,0 +1,3 @@
+page.replace_html  params[:place_id], :partial=>"share/edit_place", :locals => {:edit_place => @place}
+
+

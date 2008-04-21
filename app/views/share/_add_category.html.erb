@@ -1,0 +1,16 @@
+<div id="add_item">
+  <% remote_form_for :category, @category, :url => { :controller => "data", :action => "save_category" }, :html=>{:id=>"add_category_form"} do |p|%>
+    <table>
+      <tr>
+        <td id="last"></td>
+        <td id="right">Nazwa:</td>
+        <td>
+          <%= p.text_field :name %>
+        </td>        
+        <td id="right">
+          <%= submit_tag("Zapisz")%>
+        </td>
+      </tr>
+    </table>
+  <%end%>
+</div>

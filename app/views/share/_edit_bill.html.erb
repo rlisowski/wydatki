@@ -1,0 +1,33 @@
+<% form_remote_tag  :url => { :controller => "data", :action => "update_bill", :count=>@count }, :html=>{:id=>"edit_bill_form"}  do %>
+<%=hidden_field(:bill, :id, :value=>edit_bill.id) %>
+<table id="bills">
+    <tr>
+        <td id="lp">
+            <%=@count %>
+        </td>
+        <td id="name">
+            <%=text_field(:bill, :name, :size => 10) %>
+        </td>
+        <td id="name">
+            <%=h edit_bill.price_summary %>
+        </td>
+        <td id="name">
+          <%= select("bill", "place_id", Place.find(:all, :conditions=>["user_id=?",session[:user_id]]).collect {|pl| [ pl.name, pl.id ] }, { :include_blank => true }) %>
+        </td>
+        <td id="date">
+            <%= date_select(:bill, :spend_at,:use_month_numbers => true ) %>
+            <br>
+            <%= time_select(:bill, :spend_at) %>
+        </td>
+        <td id="date">
+            <%=h get_date(edit_bill.created_at,"%Y/%m/%d %H:%M:%S") %>
+        </td>
+        <td id="date">
+            <%=h get_date(edit_bill.updated_at,"%Y/%m/%d %H:%M:%S") %>
+        </td>
+        <td id="actions">
+            <%=submit_tag 'Zapisz' %>
+        </td>
+    </tr>
+</table>
+<% end %>

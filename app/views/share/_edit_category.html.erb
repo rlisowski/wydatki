@@ -1,0 +1,24 @@
+<% form_remote_tag  :url => { :controller => "data", :action => "update_category", :count=>@count }, :html=>{:id=>"edit_category_form"}  do %>
+  <%=hidden_field(:category, :id, :value=>edit_category.id)%>
+    <table id="categories">
+      <tr>
+        <td id="lp">
+          <%=@count%>
+        </td>
+        <td id="name">
+          <%=text_field(:category, :name, :size => 10)%>
+        </td>
+        <td id="date">
+          <%= get_date(edit_category.created_at,"%Y/%m/%d %H:%M:%S")%>
+        </td>
+        <td id="date">
+          <%= get_date(edit_category.updated_at,"%Y/%m/%d %H:%M:%S")%>
+        </td>
+        <td id="actions">
+          <%=submit_tag 'Zapisz'%>
+        </td>
+      </tr>
+    </table>
+  <% end %>
+
+

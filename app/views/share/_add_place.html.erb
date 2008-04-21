@@ -1,0 +1,34 @@
+<div id="add_item">
+  <% remote_form_for :place, @place, :url => { :controller => "data", :action => "save_place" }, :html=>{:id=>"add_place_form"} do |p|%>
+    <table>
+      <tr>
+        <td id="last"></td>
+        <td id="right">Nazwa:</td>
+        <td>
+          <%= p.text_field :name %>
+        </td>
+        <td id="right">Pełna nazwa:</td>
+        <td>
+          <%= p.text_field :full_name %>
+        </td>
+        <td colspan="2">
+        </td>
+      </tr>
+      <tr>
+        <td id="last"></td>
+        <td id="right">Ulica:</td>
+        <td>
+          <%= p.text_field :street %>
+        </td>
+        <td id="right">Miasto:</td>
+        <td>
+          <%= p.text_field :city %>
+        </td>
+        <td id="right">
+          <%= submit_tag("Zapisz")%>
+        </td>
+        <td id="last"></td>
+      </tr>
+    </table>
+  <%end%>
+</div>

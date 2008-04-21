@@ -1,0 +1,15 @@
+if @count
+  page.form.reset 'add_bill_part_form'
+  page.insert_html(:top, 'table_data', :partial => 'share/bill_part_with_div', :object=>@bill_part)
+  page.visual_effect(:pulsate, "#{@bill_part.id}",:duration=>3.0)
+  page.visual_effect(:highlight, "#{@bill_part.id}",:duration=>3.0)
+  page.replace_html('message', "Zapisano pomyślnie.")
+  color = 'ffffcc'
+else
+  page.replace_html('message', @bill_part.show_errors)
+  color = 'ff0000'
+end
+endcolor="f1ff1f"
+page.visual_effect(:pulsate, "message",:duration=>3.0)
+page.visual_effect(:highlight, "message",:duration=>5.0, :startcolor=>color,:endcolor=>endcolor)
+

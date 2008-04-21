@@ -1,0 +1,46 @@
+<div id="data">
+<div id="message">
+  
+</div>
+<div id="table" class="table">
+  <table id="categories_header">
+    <tr >
+      <td id="lp">Lp.</td>
+      <td id="name">Nazwa</td>
+      <td id="date">Dodano</td>
+      <td id="date">Zmieniono</td>
+      <td  id="actions">&nbsp;</td>
+    </tr>
+  </table>
+</div>
+<div id="table_data" class="table">
+<%count = @categories.length%>
+<% @categories.each do |category|%>
+  <div id="<%=category.id%>">
+       <table id="categories">
+  <tr class="<%= cycle('odd_row', 'even_row')%>">
+      <td id="lp">
+    <%=count%>
+    </td>
+    <td id="name">
+      <%= truncate(category.name,30)%>
+    </td>
+    <td id="date">
+      <%= get_date(category.created_at,"%Y/%m/%d %H:%M:%S")%>
+    </td>
+    <td id="date">
+      <%= get_date(category.updated_at,"%Y/%m/%d %H:%M:%S")%>
+    </td>
+    <td id="actions">
+      <%= link_to_remote( 'edytuj', :url=> {:controller=>'data', :action=>'edit_category', :category_id=>category.id, :count=>count})%>
+      &nbsp;
+      <%= link_to_remote( 'usuń', :url=> {:controller=>'data', :action=>'delete_category', :category_id=>category.id})%>
+    </td>
+  </tr>
+
+  <%count-=1%>
+  </table>
+  </div>
+<%end%>
+</div>
+</div>

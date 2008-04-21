@@ -1,0 +1,541 @@
+/*
+Document   : pomarancz
+Created on : 2008-01-19, 13:56:52
+Author     : rafal
+Description:
+Purpose of the stylesheet follows.
+*/
+/*global settings*/
+div {
+    padding: 0;
+    margin: 0;
+    border-width: 0;
+    border-style: none;
+}
+
+body {
+    background-color: #ffffff;
+    width: 100%;
+    min-height: 400px;
+    height: 100%;
+    min-width: 900px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+div#main {
+    width: 900px;
+    min-height: 400px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+}
+/*header*/
+div#header {
+    float: left;
+    height: 100px;
+    width: 900px;
+    padding: 0px;
+    margin: 0px;
+    background-image: url(/images/header.png);
+    background-repeat: no-repeat;
+}
+/*user information in righ top corner in header*/
+div#user_info {
+    width: 200px;
+    height: 75px;
+    float: right;
+    margin-top: 15px;
+    font-size: 10px;
+    font-family: Verdana;
+    border-width: 1px;
+}
+
+div#user_info table {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+div#user_info table tr {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+div#user_info table td {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    width: 40px;
+    margin: 0;
+}
+/*main menu*/
+div#menu {
+    float: left;
+    height: 52px;
+    width: 900px;
+    padding: 0px;
+    margin: 0px;
+    background-image: url(/images/menu.png);
+    background-repeat: no-repeat;
+}
+
+div#menu_left {
+    float: left;
+    height: 100%;
+    padding-left: 35px;
+    margin: 0px;
+}
+
+div#menu_right {
+    float: right;
+    height: 100%;
+    padding-right: 40px;
+    margin: 0px;
+}
+
+div#button_left {
+    float: left;
+    height: 100%;
+    width: 110px;
+    margin-top: 0px;
+    text-align:center;
+    vertical-align:middle;
+    font-weight: bolder;
+    color: #000000;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: small-caps;
+    padding-top:18px;
+}
+div#button_right {
+    float: right;
+    height: 100%;
+    width: 110px;
+    margin-top: 0px;
+    text-align:center;
+    vertical-align:middle;
+    font-weight: bolder;
+    color: #000000;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: small-caps;
+    padding-top:18px;
+}
+
+div#button_rachunki {
+    float: left;
+    height: 100%;
+    width: 110px;
+    margin-top: 0px;
+    cursor: pointer;
+    background-image: url(/images/button_rachunki_wcisniety.png);
+    background-repeat: no-repeat;
+}
+
+div#button_rachunki:hover {
+    background-image: url(/images/button_rachunki.png);
+    background-repeat: no-repeat;
+    text-decoration: none;
+}
+
+div#button_kategorie {
+    float: left;
+    height: 100%;
+    width: 110px;
+    margin-top: 0px;
+    cursor: pointer;
+    background-image: url(/images/button_kategorie_wcisniety.png);
+    background-repeat: no-repeat;
+}
+
+div#button_kategorie:hover {
+    background-image: url(/images/button_kategorie.png);
+    background-repeat: no-repeat;
+    text-decoration: none;
+}
+
+div#button_miejsca {
+    float: left;
+    height: 100%;
+    width: 110px;
+    margin-top: 0px;
+    cursor: pointer;
+    background-image: url(/images/button_miejsca_wcisniety.png);
+    background-repeat: no-repeat;
+}
+
+div#button_miejsca:hover {
+    background-image: url(/images/button_miejsca.png);
+    background-repeat: no-repeat;
+    text-decoration: none;
+}
+
+div#button_o_mnie {
+    float: left;
+    height: 100%;
+    width: 110px;
+    margin-top: 0px;
+    cursor: pointer;
+    background-image: url(/images/button_o_mnie_wcisniety.png);
+    background-repeat: no-repeat;
+}
+
+div#button_o_mnie:hover {
+    background-image: url(/images/button_o_mnie.png);
+    background-repeat: no-repeat;
+    text-decoration: none;
+}
+
+div#button_wyloguj {
+    float: left;
+    height: 100%;
+    width: 110px;
+    margin-top: 0px;
+    cursor: pointer;
+    background-image: url(/images/button_wyloguj_wcisniety.png);
+    background-repeat: no-repeat;
+}
+
+div#button_wyloguj:hover {
+    background-image: url(/images/button_wyloguj.png);
+    background-repeat: no-repeat;
+    text-decoration: none;
+}
+/*image suppostu not have border and no decoration*/
+img {
+    text-decoration: none;
+    border-width: 0px;
+}
+/*submenu for messages or something*/
+div#submenu {
+    float: left;
+    height: 78px;
+    width: 900px;
+    padding: 0px;
+    background-image: url(/images/submenu.png);
+    background-repeat: no-repeat;
+    text-align:center;
+}
+/* div#add_item in submenu*/
+div#add_item{
+    float:none;
+    width:80%;
+    margin-left:auto;
+    margin-right:auto;
+}
+/*here we wil display data and etc.*/
+div#content {
+    float: left;
+    min-height: 200px;
+    width: 880px;
+    padding: 10px;
+    background-color: #9ce7ff;
+    background-image: url(/images/content.png);
+    background-repeat: repeat-y;
+    text-align: center;
+}
+/*something abaut me*/
+div#foot {
+    float: left;
+    height: 80px;
+    width: 900px;
+    padding: 0px;
+    background-image: url(/images/foot.png);
+    background-repeat: no-repeat;
+    text-align: left;
+}
+/*registering*/
+div#register {
+    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ffffff;
+    padding: 0;
+    height: 220px;
+    width: 600px;
+    text-align: center;
+    float:left;
+    position: absolute;
+    margin-left: -250px;
+    margin-top: -110px;
+    left: 50%;
+    top: 30%;
+}
+
+div#register_left {
+    float: left;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    background-image: url(/images/register_left.png);
+    background-repeat: no-repeat;
+    width: 25px;
+}
+
+div#register_center {
+    float: left;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    background-image: url(/images/register_center.png);
+    background-repeat: repeat-x;
+    width: 540px;
+    vertical-align: middle;
+}
+
+div#register_center table td#last {
+    width: 100%;
+}
+
+div#register_right {
+    float: left;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    background-image: url(/images/register_right.png);
+    background-repeat: no-repeat;
+    width: 25px;
+}
+/*logging*/
+div#login {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ffffff;
+    padding: 0;
+    height: 220px;
+    width: 360px;
+    text-align: center;
+    position: absolute;
+    margin-left: -150px;
+    margin-top: -110px;
+    left: 50%;
+    top: 50%;
+}
+
+div#login_left {
+    float: left;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    background-image: url(/images/register_left.png);
+    background-repeat: no-repeat;
+    width: 25px;
+}
+
+div#login_center {
+    float: left;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    background-image: url(/images/register_center.png);
+    background-repeat: repeat-x;
+    min-width: 300px;
+    vertical-align: middle;
+}
+
+div#login_right {
+    float: left;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    background-image: url(/images/register_right.png);
+    background-repeat: no-repeat;
+    width: 25px;
+}
+/*global table setting*/
+table {
+    border-width: 0px;
+    border-style: none;
+    padding: 0;
+    margin: 0;
+}
+/*table with data to display*/
+table#data_form {
+    padding: 0;
+    margin: 0;
+    margin-top: 60px;
+}
+
+td {
+    text-align: left;
+}
+
+td#right {
+    text-align: right;
+}
+td#login_flash{
+    text-align: right;
+    color: #ff0000;
+    font-style:oblique;
+    font-weight:bold;
+}
+
+#middle {
+    position: absolute;
+    width: 400px;
+    height: 300px;
+    margin-left: -200px;
+    margin-top: -150px;
+    left: 50%;
+    top: 50%;
+}
+/* pagination */
+div#pagination {
+    width: 100%;
+}
+
+div.pagination {
+    padding: 3px;
+    margin: 3px;
+}
+
+div.pagination a {
+    padding: 2px 5px 2px 5px;
+    margin: 2px;
+    border: 1px solid #AAAADD;
+    text-decoration: none; /* no underline */
+    color: #000099;
+}
+
+div.pagination a:hover, div.pagination a:active {
+    border: 1px solid #000099;
+    color: #000;
+}
+
+div.pagination span.current {
+    padding: 2px 5px 2px 5px;
+    margin: 2px;
+    border: 1px solid #000099;
+    font-weight: bold;
+    background-color: #000099;
+    color: #FFF;
+}
+
+div.pagination span.disabled {
+    padding: 2px 5px 2px 5px;
+    margin: 2px;
+    border: 1px solid #EEE;
+    color: #DDD;
+}
+/*abaut user*/
+table#user {
+    width: 100%;
+}
+
+table#user td {
+    width: 30%;
+}
+/*global setting for input*/
+input {
+    background-color: #ffcc00;
+    /*    margin: 5px;
+    padding: 5px; */
+}
+/*global setting for select*/
+select {
+    background-color: #ffcc00;
+    /*    margin: 5px;
+    padding: 5px; */
+}
+
+div
+#add _item {
+    text-align: center;
+    margin: 0 auto;
+    height: 78px;
+    padding: 0px;
+    padding-left: 50px;
+}
+
+div
+#add _item table {
+    width: 80%;
+}
+
+.table {
+    max-height: 400px;
+    width: 870px;
+    margin: 0 auto;
+    overflow: auto;
+}
+
+.table table {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+td#lp {
+    width: 30px;
+}
+
+.table table td {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.table table#places_header {
+    width: 853px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.table table td#name {
+    width: 100px;
+}
+
+.table table td#full_name {
+    width: 90px;
+}
+
+.table table td#street {
+    width: 90px;
+}
+
+.table table td#city {
+    width: 90px;
+}
+
+td#date {
+    width: 140px;
+}
+
+td#actions {
+    width: 120px;
+}
+/*change color of rows*/
+.odd_row {
+    background-color: #e7e7de;
+}
+
+.even_row {
+    background-color: #d1d7dc;
+}
+
+.new_row {
+    background-color: #d1d7ff;
+}
+/*table header*/
+#header {
+    background-color: #aa00aa;
+}
+/*messages to user*/
+div#message {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    overflow: auto;
+    min-height: 30px;
+}
+.formError{
+    color:red;
+    font-weight: bolder;
+    font-style: normal;
+}

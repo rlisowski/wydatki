@@ -1,0 +1,135 @@
+<div id="register">
+  <div id="register_left">
+  </div>
+  <div id="register_center">
+    <%size=27
+    cols=20
+    rows=4 %>
+    <%# form_tag :action => 'add_user' do %>
+    <%# form_for :user, @user, :url => { :controller => "user", :action => "add_user" } do |f| %>
+    <% form_for :user, @user, :url => { :controller => "authentication", :action => "register" } do |f| %>
+      <table id="data_form">
+        <tr>
+          <td id="right">
+            Login*
+          </td>
+          <td>
+            <span>
+              <%= f.text_field :login, :size => size,:tabindex=>1  %>
+            </span>
+          </td>
+          <td id="last">
+            <%=error_message_on(:user, :login) %>
+          </td>
+        </tr>
+        <tr>
+          <td id="right">
+            Haslo*
+          </td>
+          <td>
+            <span>
+              <%= f.password_field :password, :size => size,:tabindex=>2  %>
+            </span>
+          </td>
+          <td id="last">
+            <%=error_message_on(:user, :password) %>
+          </td>
+        </tr>
+        <tr>
+          <td id="right">
+            <%=space_to_nbsp("potwierdź*")%>
+          </td>
+          <td>
+            <span>
+              <%= f.password_field :password_confirmation, :size => size,:tabindex=>3  %>
+            </span>
+          </td>
+          <td id="last">
+            <%=error_message_on(:user,:password_confirmation) %>
+          </td>
+        </tr>
+        <tr>
+          <td id="right">
+            E-mail*
+          </td>
+          <td>
+            <span>
+              <%= f.text_field :email, :size => size,:tabindex=>4  %>
+            </span>
+          </td>
+          <td id="last">
+            <%=error_message_on(:user, :email) %>
+          </td>
+        </tr>
+      
+      </table>
+    </div>
+    <div id="register_right">
+    </div>
+  
+  
+  
+  
+  
+  
+  
+    <div id="register_left">
+    </div>
+    <div id="register_center">
+      <%size=27
+      cols=20
+      rows=4 %>
+      <table id="data_form">
+        <tr>
+          <td id="right">
+            Imie
+          </td>
+          <td>
+            <span>
+              <%= f.text_field :forename, :size => size,:tabindex=>5  %>
+            </span>
+          </td>
+          <td id="last">
+          </td>
+        </tr>
+        <tr>
+          <td id="right">
+            Nazwisko
+          </td>
+          <td>
+            <span>
+              <%= f.text_field :surname, :size => size,:tabindex=>6  %>
+            </span>
+          </td>
+          <td id="last">
+          </td>
+        </tr>
+        <tr>
+          <td id="right">
+            Przepisz tekst
+          </td>
+          <td>
+            <span>
+              <%= f.text_field :register_text, :size => size,:tabindex=>7  %>
+            </span>
+          </td>
+          <td id="last">
+            <%= image_tag  "/graph/show_register_image"%>
+          </td>
+          <td id="last" class="formError">
+            <%= flash[:register_validation_error] if flash[:register_validation_error] %>
+          </td>
+        </tr>
+      
+        <tr>
+          <td><%= link_to space_to_nbsp("Zaloguj się."), { :action=>"login"} %></td>
+          <td >* - pola wymagane &nbsp; <%= submit_tag("Zarejestruj.")%></td>
+          <td id="last"></td>
+          
+        </tr>
+      </table>
+    <%end%>
+  </div>
+  <div id="register_right">
+  </div>
+</div>

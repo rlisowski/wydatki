@@ -1,0 +1,2 @@
+page.replace_html  'submenu', :partial=>"share/add_place"
+page.replace_html  'content', :partial=>"places_contents"

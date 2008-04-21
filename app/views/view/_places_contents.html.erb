@@ -1,0 +1,58 @@
+<div id="data">
+  <div id="message">
+    
+  </div>
+  <div id="table" class="table">
+    <table id="places_header">
+      <tr >
+        <td id="lp">Lp.</td>
+        <td id="name">Nazwa</td>
+        <td id="full_name">Pełna nazwa</td>
+        <td id="street">Ulica</td>
+        <td id="city">Miasto</td>
+        <td id="date">Dodano</td>
+        <td id="date">Zmieniono</td>
+        <td  id="actions">&nbsp;</td>
+      </tr>
+    </table>
+  </div>
+  <div id="table_data" class="table">
+    <%count = @places.length%>
+    <% @places.each do |place|%>
+      <div id="<%=place.id%>">
+        <table id="places">
+          <tr class="<%= cycle('odd_row', 'even_row')%>"  >
+            <td id="lp">
+              <%=count%>
+            </td>
+            <td id="name">
+              <%= truncate(place.name,15)%>
+            </td>
+            <td id="full_name">
+              <%= truncate(place.full_name,15)%>
+            </td>
+            <td id="street">
+              <%= truncate(place.street,15)%>
+            </td>
+            <td id="city">
+              <%= truncate(place.city,15)%>
+            </td>
+            <td id="date">
+              <%= get_date(place.created_at,"%Y/%m/%d %H:%M:%S")%>
+            </td>
+            <td id="date">
+              <%= get_date(place.updated_at,"%Y/%m/%d %H:%M:%S")%>
+            </td>
+            <td id="actions">
+              <%= link_to_remote( 'edytuj', :url=> {:controller=>'data', :action=>'edit_place', :place_id=>place.id, :count=>count})%>
+              &nbsp;
+              <%= link_to_remote( 'usuń', :url=> {:controller=>'data', :action=>'delete_place', :place_id=>place.id})%>
+            </td>
+          </tr>
+        
+          <%count-=1%>
+        </table>
+      </div>
+    <%end%>
+  </div>
+</div>

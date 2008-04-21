@@ -1,0 +1,15 @@
+if @count
+  page.form.reset 'add_place_form'
+  page.insert_html(:top, 'table_data', :partial => 'share/place', :element=>@place)
+  page.visual_effect(:pulsate, "#{@place.id}",:duration=>3.0)
+  page.visual_effect(:highlight, "#{@place.id}",:duration=>3.0)
+  page.replace_html('message', "Zapisano pomyślnie.")
+  color = 'ffffcc' 
+else
+  #  page.replace_html('message', "Takie miejsce już istnieje, lub wprowadzono błędne dane.")
+  page.replace_html('message', @place.show_errors)
+  color = 'ff0000'
+end
+endcolor="f1ff1f"
+page.visual_effect(:pulsate, "message",:duration=>3.0, :startcolor=>color,:endcolor=>endcolor)
+page.visual_effect(:highlight, "message",:duration=>5.0, :startcolor=>color,:endcolor=>endcolor)

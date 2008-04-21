@@ -1,0 +1,11 @@
+--- 
+throttle: "10"
+num_procs: "300"
+cwd: /var/www/html/rails/Wydatki/
+timeout: "3"
+log_file: log/cluster.log
+port: "3900"
+environment: production
+address: 127.0.0.1
+pid_file: tmp/pids/cluster.pid
+servers: 4

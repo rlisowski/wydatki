@@ -1,0 +1,32 @@
+<div id="<%=place.id%>">
+  <table id="places">
+    <tr class="new_row">
+      <td id="lp">
+        <%=@count%>
+      </td>
+      <td id="name">
+        <%= trunc place.name%>
+      </td>
+      <td id="full_name">
+        <%= trunc place.full_name%>
+      </td>
+      <td id="street">
+        <%= trunc place.street%>
+      </td>
+      <td id="city">
+        <%= trunc place.city%>
+      </td>
+      <td id="date">
+        <%= get_date(place.created_at,"%Y/%m/%d %H:%M:%S")%>
+      </td>
+      <td id="date">
+        <%= get_date(place.updated_at,"%Y/%m/%d %H:%M:%S")%>
+      </td>
+      <td id="actions">
+        <%= link_to_remote( 'edytuj', :url=> {:controller=>'data', :action=>'edit_place', :place_id=>place.id, :count=>@count})%>
+        &nbsp;
+        <%= link_to_remote( 'usuń', :url=> {:controller=>'data', :action=>'delete_place', :place_id=>place.id})%>
+      </td>
+    </tr>
+  </table>
+</div>

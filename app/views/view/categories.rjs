@@ -1,0 +1,2 @@
+page.replace_html  'submenu', :partial=>"share/add_category"
+page.replace_html  'content', :partial=>"categories_contents"

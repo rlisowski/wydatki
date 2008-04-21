@@ -1,0 +1,28 @@
+<% form_remote_tag  :url => { :controller => "data", :action => "update_bill_part", :count=>@count }, :html=>{:id=>"edit_bill_part_form"}  do %>
+<%=hidden_field(:bill_part, :id, :value=>edit_bill_part.id) %>
+<table id="bills">
+    <tr>
+        <td id="lp">
+            <%=@count %>
+        </td>
+        <td id="name">
+            <%=text_field(:bill_part, :name, :size => 10) %>
+        </td>
+        <td id="name">
+          <%= select("bill_part", "category_id", Category.find(:all, :conditions=>["user_id=?",session[:user_id]]).collect {|pl| [ pl.name, pl.id ] }, { :include_blank => true }) %>
+        </td>
+        <td id="name">
+            <%=text_field(:bill_part, :price, :size => 10) %>
+        </td>
+        <td id="name">
+            <%=text_field(:bill_part, :count, :size => 10) %>
+        </td>
+        <td id="name">
+            <%=h(trunc(edit_bill_part.price_summary)) %>
+        </td>
+        <td id="actions">
+            <%=submit_tag 'Zapisz' %>
+        </td>
+    </tr>
+</table>
+<% end %>

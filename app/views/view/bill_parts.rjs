@@ -1,0 +1,10 @@
+page.replace_html  'submenu', :partial=>"share/add_bill_part"
+page.replace_html  'content', :partial=>"bill_parts_contents"
+
+#if @bill_parts.size > 0
+#  page.insert_html(:bottom, params[:bill_id], :partial=>"share/bill_part", :colection=>@bill_parts)
+#else
+#  page.insert_html(:bottom, params[:bill_id], "<div id='#{params[:bill_id]}-message'><b>Nie ma zadnych produktow przypisanych do tego rachunku.</b></div>")
+#  page.visual_effect(:highlight, "#{params[:bill_id]}-message", :duration=>5.0)
+#  page.visual_effect(:dropOut, "#{params[:bill_id]}-message", :duration=>8.0)
+#end

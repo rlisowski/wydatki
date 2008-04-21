@@ -1,0 +1,13 @@
+if @count
+  page.replace_html params[:category][:id],  :partial => 'share/category', :element=>@category
+  page.visual_effect(:pulsate, params[:category][:id],:duration=>3.0)
+  page.visual_effect(:highlight, params[:category][:id],:duration=>3.0)
+  page.replace_html('message', "Zapisano pomyślnie.")
+  color = 'ffffcc'
+else
+  page.replace_html('message', @category.show_errors)
+  color = 'ff0000'
+end
+endcolor="f1ff1f"
+page.visual_effect(:pulsate, "message",:duration=>3.0, :startcolor=>color,:endcolor=>endcolor)
+page.visual_effect(:highlight, "message",:duration=>5.0, :startcolor=>color,:endcolor=>endcolor)

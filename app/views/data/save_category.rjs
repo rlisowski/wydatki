@@ -1,0 +1,15 @@
+if @count
+  page.form.reset 'add_category_form'
+  page.insert_html(:top, 'table_data', :partial => 'share/category', :element=>@category)
+  page.visual_effect(:pulsate, "#{@category.id}",:duration=>3.0)
+  page.visual_effect(:highlight, "#{@category.id}",:duration=>3.0)
+  page.replace_html('message', "Zapisano pomyślnie.")
+  color = 'ffffcc'
+else
+  page.replace_html('message', @category.show_errors)
+  color = 'ff0000'
+end
+endcolor="f1ff1f"
+page.visual_effect(:pulsate, "message",:duration=>3.0, :startcolor=>color,:endcolor=>endcolor)
+page.visual_effect(:highlight, "message",:duration=>5.0, :startcolor=>color,:endcolor=>endcolor)
+

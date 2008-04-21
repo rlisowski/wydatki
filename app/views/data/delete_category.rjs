@@ -1,0 +1,13 @@
+page.replace_html('message', flash[:notice])
+if @result 
+  page.visual_effect(:dropOut, params[:category_id], :duration => 3.0) 
+  color='ffffcc'
+else
+  color = 'ff0000'
+end
+page.visual_effect(:highlight, params[:category_id], :duration => 5.0, :startcolor=>color)
+endcolor="f1ff1f"
+page.visual_effect(:pulsate, "message",:duration=>3.0, :startcolor=>color,:endcolor=>endcolor)
+page.visual_effect(:highlight, "message",:duration=>5.0, :startcolor=>color,:endcolor=>endcolor)
+
+

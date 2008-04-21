@@ -1,0 +1,37 @@
+<div id="login">
+  <div id="login_left">
+  </div>
+  <div id="login_center">
+    <% form_tag :action => 'login' do %>
+      <table id="data_form">
+        <tr>
+          <td id="login_flash" colspan="2">
+            <%= flash[:notice] if flash[:notice] %>
+          </td>
+        </tr>
+        <tr>
+          <td id="right">
+            Login
+          </td>
+          <td>
+            <span><%=text_field "user", "login", :size => 20 %></span>
+          </td>
+        </tr>
+        <tr>
+          <td id="right">
+            Haslo
+          </td>
+          <td>
+            <span> <%=password_field "user", "password", :size => 20 %></span>
+          </td>
+        </tr>
+        <tr>
+          <td id="right" ><%= link_to space_to_nbsp("Zarejestruj się."), { :action=>"register"} %></td>
+          <td id="right" ><%= submit_tag "Ok" %></td>
+        </tr>
+      </table>
+    <%end%>
+  </div>
+  <div id="login_right">
+  </div>
+</div>

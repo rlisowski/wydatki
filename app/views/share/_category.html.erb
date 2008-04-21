@@ -1,0 +1,23 @@
+<div id="<%=category.id%>">
+  <table id="categories">
+    <tr class="new_row">
+      <td id="lp">
+        <%=@count%>
+      </td>
+      <td id="name">
+        <%= category.name%>
+      </td>
+      <td id="date">
+        <%= get_date(category.created_at,"%Y/%m/%d %H:%M:%S")%>
+      </td>
+      <td id="date">
+        <%= get_date(category.updated_at,"%Y/%m/%d %H:%M:%S")%>
+      </td>
+      <td id="actions">
+        <%= link_to_remote( 'edytuj', :url=> {:controller=>'data', :action=>'edit_category', :category_id=>category.id, :count=>@count})%>
+        &nbsp;
+        <%= link_to_remote( 'usuń', :url=> {:controller=>'data', :action=>'delete_category', :category_id=>category.id})%>
+      </td>
+    </tr>
+  </table>
+</div>

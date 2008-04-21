@@ -1,0 +1,43 @@
+<%= flash[:notice]%>
+<% form_for :user, @user, :url => { :controller => "user", :action => "save" } do |f| %>
+  <table id="user">
+    <tr>
+      <td id="right">
+        Imie: 
+      </td>
+      <td>
+        <%= f.text_field :forename %>
+      </td>
+      <td id="last">
+        <%=error_message_on(@user, :forename) %>
+      </td>
+    </tr>
+    <tr>
+      <td id="right">
+        Nazwisko : 
+      </td>
+      <td><%= f.text_field :surname %>  
+      </td>
+      <td id="last">
+        <%=error_message_on(@user, :surname) %>
+      </td>
+    </tr>
+    <tr>
+      <td id="right">
+        e-mail : 
+      </td>
+      <td>
+        <%= f.text_field :email %>  
+      </td>
+      <td id="last">
+        <%=error_message_on(@user, :email) %>
+      </td>
+    </tr>
+    <tr>
+      <td id="right" colspan="2">
+        <%= submit_tag("Zapisz")%>
+      </td>
+      <td></td>
+    </tr>
+  </table>
+<% end %>

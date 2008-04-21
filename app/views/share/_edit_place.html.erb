@@ -1,0 +1,33 @@
+<% form_remote_tag  :url => { :controller => "data", :action => "update_place", :count=>@count }, :html=>{:id=>"edit_place_form"}  do %>
+  <%=hidden_field(:place, :id, :value=>edit_place.id)%>
+    <table id="places">
+      <tr>
+        <td id="lp">
+          <%=@count%>
+        </td>
+        <td id="name">
+          <%=text_field(:place, :name, :size => 10)%>
+        </td>
+        <td id="full_name">
+          <%=text_field(:place, :full_name, :size => 10)%>
+        </td>
+        <td id="street">
+          <%=text_field(:place, :street, :size => 10)%>
+        </td>
+        <td id="city">
+          <%=text_field(:place, :city, :size => 10)%>
+        </td>
+        <td id="date">
+          <%= get_date(edit_place.created_at,"%Y/%m/%d %H:%M:%S")%>
+        </td>
+        <td id="date">
+          <%= get_date(edit_place.updated_at,"%Y/%m/%d %H:%M:%S")%>
+        </td>
+        <td id="actions">
+          <%=submit_tag 'Zapisz'%>
+        </td>
+      </tr>
+    </table>
+  <% end %>
+
+

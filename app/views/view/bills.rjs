@@ -1,0 +1,2 @@
+page.replace_html  'submenu', :partial=>"share/add_bill"
+page.replace_html  'content', :partial=>"bills_contents"

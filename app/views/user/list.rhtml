@@ -1,0 +1,52 @@
+<%= link_to "add user", :controller => "user", :action => "show_add_user" %>
+    <table cellpadding="5" cellspacing="0" >
+       <tr id="Header" >
+           <td>
+               
+           </td>
+  			<td id="Lp">
+  				Lp.
+  			</td> 
+				<td>
+				  Nazwisko
+				</td>
+				<td>
+				  Imie
+				</td>
+				<td>
+					E-mail
+				</td>
+				<td>
+					Login
+				</td>
+			</tr>
+			<% count = 0 %>
+		<% for user in @users %>
+			<% count += 1 %>
+			<tr id="<%=user.id%>" valign="top" class="<%= cycle('OddRow', 'EvenRow') %>">
+			    
+                <td>
+                    <%=link_to_remote "Delete this user",
+    					:url => { :action => "delete", :user_id => user.id },
+    					:update => {:failure => "error" }
+					%>
+                </td>
+				<td id="Lp">
+					<%= count%>
+				</td>
+				<td id="Surname">
+				  <%= h(user.surname) %>
+				</td>
+				<td id="Forename">
+				  <%= h(user.forename) %>
+				</td>
+				<td id="Email">
+					<%= h(user.email) %>
+				</td>
+				<td id="Login">
+					<%= h(user.login) %>
+				</td>
+			</tr>
+		<% end %>
+	</table>
+<br />

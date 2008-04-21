@@ -1,0 +1,41 @@
+<div id="data">
+  <div id="message">
+  </div>
+  <div id="table" class="table">
+    <table id="bills_header">
+      <tr>
+        <td id="lp">
+          Lp.
+        </td>
+        <td id="name">
+          Nazwa
+        </td>
+        <td id="name">
+          Suma
+        </td>
+        <td id="name">
+          Miejsce
+        </td>
+        <td id="name">
+          Wydano
+        </td>
+        <td id="date">
+          Dodano
+        </td>
+        <td id="date">
+          Zmieniono
+        </td>
+        <td id="actions">
+          &nbsp;
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div id="table_data" class="table">
+    <% @count = @bills.size%>
+    <% @bills.each do |bill| -%>
+      <%= render :partial=>"share/bill_with_div", :object=>bill %>
+      <% @count-=1 %>
+    <% end -%>
+  </div>
+</div>

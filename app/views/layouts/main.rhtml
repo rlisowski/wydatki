@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="en-us" />
+    <title>Wydatki Domowe</title>
+    <meta name="Author" content="Lisowski Rafał" />
+    <%= stylesheet_link_tag "pomarancz" %>
+    <%= javascript_include_tag :defaults %>
+    <%#= javascript_include_tag 'swfobject' %>
+  </head>
+  <body>
+    <div id="main">
+      <div id="header">
+        <div id="user_info">
+          <table>
+            <tr>
+              <td><b>użytkownik:</b></td>
+            </tr>
+            <tr>
+              <td id="user_name" ><%=session[:user_login]%></td>
+            </tr>
+            <tr>
+              <td id="standard" colspan="2"><b><%=space_to_nbsp('ostatnie logowanie:')%></b></td>
+            </tr>
+            <tr>
+              <td id="login_success_date"  colspan="2"><%=space_to_nbsp(get_date(session[:logged_at]))%></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div id="menu">
+        <div id="menu_left">
+          <div id="button_rachunki">
+            <%#= link_to image_tag('/images/button.png'), {:controller=>'view', :action=>'bills'}%>
+            <%= link_to_remote( image_tag('/images/button.png'), :url=> {:controller=>'view', :action=>'bills'})%>
+          </div>
+          <div id="button_kategorie">
+            <%#= link_to image_tag('/images/button.png'), {:controller=>'view', :action=>'categories'}%>
+            <%= link_to_remote( image_tag('/images/button.png'), :url=> {:controller=>'view', :action=>'categories'})%>
+          </div>
+          <div id="button_miejsca">
+            <%#= link_to image_tag('/images/button.png'), {:controller=>'view', :action=>'places'}%>
+            <%= link_to_remote( image_tag('/images/button.png'), :url=> {:controller=>'view', :action=>'places'})%>
+          </div>
+        </div>        
+        <div id="menu_right">
+          <div id="button_o_mnie">
+            <%= link_to image_tag('/images/button.png'), {:controller=>'view', :action=>'abaut_me'}%>
+          </div>
+          <div id="button_wyloguj">
+            <%= link_to image_tag('/images/button.png'), {:controller=>'authentication', :action=>'logout'}%>
+          </div>
+        </div>
+      </div>
+      <div id="submenu">
+        
+      </div>
+      
+      <div id="content">
+        <%=yield%>
+      </div>
+      <div id="foot">
+      </div>
+    </div> 
+  </body>
+</html>

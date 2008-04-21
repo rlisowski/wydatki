@@ -1,0 +1,43 @@
+<div id="add_item">
+  <% remote_form_for :bill, @bill, :url => { :controller => "data", :action => "save_bill" }, :html=>{:id=>"add_bill_form"} do |p| %>
+    <table>
+      <tr>
+        <td id="last">
+        </td>
+        <td id="right">
+          Nazwa:
+        </td>
+        <td>
+          <%= p.text_field :name %>
+        </td>
+        <td id="right">
+          Data wydania:
+        </td>
+        <td>
+          <%= p.date_select :spend_at, :use_month_numbers => true %>
+        </td>
+        <td id="right">
+        </td>
+      </tr>
+      <tr>
+        <td id="last">
+        </td>
+        <td id="right">
+          Miejsce:
+        </td>
+        <td>
+          <%= select("bill", "place_id", Place.find(:all, :conditions=>["user_id=?",session[:user_id]]).collect {|pl| [ pl.name, pl.id ] }, { :include_blank => true }) %>
+        </td>
+        <td id="right">
+          Godzina wydania:
+        </td>
+        <td>
+          <%= p.time_select :spend_at%>
+        </td>
+        <td id="right">
+          <%= submit_tag("Zapisz") %>
+        </td>
+      </tr>
+    </table>
+  <%end %>
+</div>
