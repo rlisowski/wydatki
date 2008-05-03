@@ -3,7 +3,7 @@ class DataController < ApplicationController
   
   # bill_parts
   def save_bill_part
-    
+    params[:bill_part][:user_id] = session[:user_id]
     params[:bill_part][:price] = params[:bill_part][:price].gsub(',','.')
     params[:bill_part][:count] = params[:bill_part][:count].gsub(',','.')
     params[:bill_part][:price_summary] = params[:bill_part][:count].to_f*params[:bill_part][:price].to_f

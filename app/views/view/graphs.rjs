@@ -1,0 +1,2 @@
+page.replace_html  'submenu', :partial=>"graphs_submenu"
+page.replace_html  'content', '<h1>Statystyki</h1>'

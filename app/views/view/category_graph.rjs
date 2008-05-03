@@ -1,0 +1,1 @@
+page.replace_html  'content', :partial=>"category_graph"

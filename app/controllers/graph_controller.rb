@@ -1,5 +1,5 @@
 class GraphController < ApplicationController
-  #  before_filter :login_required
+  before_filter :login_required, :except=>[:show_register_image]
   
   
 
@@ -21,7 +21,7 @@ class GraphController < ApplicationController
         drawable.gravity = Magick::CenterGravity
 
         # Tweak the font to draw slightly up and left from the center
-#        drawable.annotate(icon, 0, 0, -3, -6, @order.quantity.to_s)
+        #        drawable.annotate(icon, 0, 0, -3, -6, @order.quantity.to_s)
         text = random_string(rand(3)+5).downcase
         drawable.annotate(icon, 0, 0, 0,0, text)
         
@@ -35,7 +35,56 @@ class GraphController < ApplicationController
 
     end
   end
+  def place
+    places = Place.find_all_by_user_id session[:user_id], :order=>"name ASC"
+    
+    all = Bill.count('id',:conditions=>["user_id = ?",session[:user_id]]) 
+    
+    data = []
+    header = []
+    places.each do |place|
+      count =  Bill.count('id',:conditions=>["place_id = ?",place.id]) 
+      if count!=0
+        count = (count.to_f/all.to_f)*100
+        data << format("%.2f",count)
+        header << place.name
+      end
+    end
+    g = Graph.new
+    g.pie(60, '#505050', '{font-size: 12px; color: #404040;}')
+    #    g.pie_values(data, %w(IE FireFox Opera Wii Other))
+    g.pie_values(data, header)
+    g.pie_slice_colors(%w(#d01fc3 #356aa0 #c79810))
+    g.set_tool_tip("#val#%")
+    g.title("Procent użycia miejsc", '{font-size:18px; color: #d01f3c}' )
+    render :text => g.render
 
+  end
+  def category
+    categories = Category.find_all_by_user_id session[:user_id], :order=>"name ASC"
+    
+    all = BillPart.count('id',:conditions=>["user_id = ?",session[:user_id]]) 
+    
+    data = []
+    header = []
+    categories.each do |category|
+      count =  BillPart.count('id',:conditions=>["category_id = ?",category.id]) 
+      if count!=0
+        count = (count.to_f/all.to_f)*100
+        data << format("%.2f",count)
+        header << category.name
+      end
+    end
+    g = Graph.new
+    g.pie(60, '#505050', '{font-size: 12px; color: #404040;}')
+    #    g.pie_values(data, %w(IE FireFox Opera Wii Other))
+    g.pie_values(data, header)
+    g.pie_slice_colors(%w(#d01fc3 #356aa0 #c79810))
+    g.set_tool_tip("#val#%")
+    g.title("Procent użycia miejsc", '{font-size:18px; color: #d01f3c}' )
+    render :text => g.render
+
+  end
   def welcome
     g = Graph.new
     g.title( 'Sprawdź ile, jak często i na co wydajesz pieniądze!', '{color: #7E97A6; font-size: 20; text-align: center}' )

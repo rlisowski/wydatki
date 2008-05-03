@@ -1,0 +1,23 @@
+<div id="statistics">
+  <div id="statistics_table">
+    <table id="place_graph">
+      <tr >
+        <td>Miejce</td>
+        <td>Ilość</td>
+        <td>Całość</td>
+        <td>Procent</td>
+      </tr>
+      <% @data.each do |row| %>
+        <tr >
+          <td><%=row[0]%></td>
+          <td><%=row[1]%></td>
+          <td><%=row[2]%></td>
+          <td><%=row[3]%></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <div id="graph">
+    <%= @graph %>
+  </div>
+</div>

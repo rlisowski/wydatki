@@ -1,6 +1,7 @@
 class BillPart < ActiveRecord::Base
   belongs_to :bill
   belongs_to :category
+  belongs_to :user
   
   validates_numericality_of(:price, :allow_nil=>false, :message=>"<b>Cena</b> może się składać tylko z cyfr i ew. z kropki: 13.99 lub 13,99.",:greater_than=>0)
   validates_numericality_of(:count, :allow_nil=>false, :message=>"<b>Licznik</b> może się składać tylko z cyfr i ew. z kropki: 2.5 lub 2,5.",:greater_than=>0)

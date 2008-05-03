@@ -539,3 +539,30 @@ div#message {
     font-weight: bolder;
     font-style: normal;
 }
+#statistics{
+    
+  text-align: center;
+}
+#statistics_table{
+     text-align: center;
+     margin: 0 auto;
+     width:300px;
+     float:left;
+}
+table#place_graph{
+    
+  padding:0;
+  margin:20;
+  border-collapse:collapse;
+}
+table#place_graph td{
+  padding:0 5px;
+  margin:0;
+  
+  border-style: solid;
+  border-width: 1px;
+  border-color:black;
+}
+#graph{
+    float:left;
+}

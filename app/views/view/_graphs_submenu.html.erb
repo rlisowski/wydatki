@@ -1,0 +1,14 @@
+<div id="menu_left">
+  <div id="button_left">
+    <%#= link_to image_tag('/images/button.png'), {:controller=>'view', :action=>'places'}%>
+    <%= link_to_remote( 'places', :url=> {:controller=>'view', :action=>'place_graph'})%>
+  </div>
+  <div id="button_left">
+    <%#= link_to image_tag('/images/button.png'), {:controller=>'view', :action=>'places'}%>
+    <%= link_to_remote( 'categories', :url=> {:controller=>'view', :action=>'category_graph'})%>
+  </div>
+  <div id="button_left">
+    <%#= link_to image_tag('/images/button.png'), {:controller=>'view', :action=>'places'}%>
+    <%= link_to_remote( 'bills', :url=> {:controller=>'view', :action=>'bill_graph'})%>
+  </div>
+</div>
