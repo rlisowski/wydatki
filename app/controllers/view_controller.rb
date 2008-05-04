@@ -78,4 +78,9 @@ class ViewController < ApplicationController
     return if request.xhr?
     redirect_to_welcome
   end
+  def bill_graph_details
+    puts "bill_graph_details: #{params.inspect}"
+    return if request.xhr?
+    redirect_to_welcome
+  end
 end

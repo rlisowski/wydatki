@@ -81,7 +81,7 @@ class GraphController < ApplicationController
     g.pie_values(data, header)
     g.pie_slice_colors(%w(#d01fc3 #356aa0 #c79810))
     g.set_tool_tip("#val#%")
-    g.title("Procent użycia miejsc", '{font-size:18px; color: #d01f3c}' )
+    g.title("Procent użycia kategorii", '{font-size:18px; color: #d01f3c}' )
     render :text => g.render
 
   end
