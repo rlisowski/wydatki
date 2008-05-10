@@ -79,7 +79,38 @@ class ViewController < ApplicationController
     redirect_to_welcome
   end
   def bill_graph_details
-    puts "bill_graph_details: #{params.inspect}"
+    price_from = (params['bill_graph']['price_from']['calosc']+'.'+params['bill_graph']['price_from']['grosze']).to_f
+    price_to = (params['bill_graph']['price_to']['calosc']+'.'+params['bill_graph']['price_to']['grosze']).to_f
+    
+    year = params['bill_graph']['date_from(1i)']
+    year = "0#{year}" if year.to_i < 10
+    month = params['bill_graph']['date_from(2i)']
+    month = "0#{month}" if month.to_i < 10
+    day = params['bill_graph']['date_from(3i)']
+    day = "0#{day}" if day.to_i < 10
+    
+    date_from = "#{year}-#{month}-#{day} 00:00:00"
+    
+    year = params['bill_graph']['date_to(1i)']
+    year = "0#{year}" if year.to_i < 10
+    month = params['bill_graph']['date_to(2i)']
+    month = "0#{month}" if month.to_i < 10
+    day = params['bill_graph']['date_to(3i)']
+    day = "0#{day}" if day.to_i < 10
+    
+    date_to = "#{year}-#{month}-#{day} 24:00:00"
+    
+    query = []
+    
+    
+    query << "price_summary >= '#{price_from}'" if price_from > 0
+    query << "price_summary <= '#{price_to}'" if price_to > 0
+    query << "spend_at >= '#{date_from}'"# unless date_from.eql?(Time.now.strftime('%Y/%m/%d'))
+    query << "spend_at <= '#{date_to}'"# unless date_to.eql?(Time.now.strftime('%Y/%m/%d'))
+      
+    query = query.join(' and ')
+    @data = Bill.find_all_by_user_id session[:user_id], :conditions=>["#{query}"]
+    @graph = open_flash_chart_object(800,400, "/graph/bill_graph_details?#{params.to_query}")    
     return if request.xhr?
     redirect_to_welcome
   end

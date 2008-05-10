@@ -18,8 +18,9 @@
         <td colspan="3">
           <%= date_select :bill_graph, :date_to, :use_month_numbers => true %>
         </td> 
-      </tr>
-      <tr>
+        <td>
+          &nbsp;&nbsp;&nbsp;
+        </td>
         <td>
           Kwota:
         </td> 
@@ -27,36 +28,36 @@
           Od:
         </td> 
         <td id="right">
-          <%= text_field :bill_graph, :price_from_calosc, :size=>5 %>
+          <%= text_field :bill_graph, 'price_from][calosc', :size=>5, :value=>'00' %>
         </td> 
         <td id="right">
           ,
         </td> 
         <td id="right">
-          <%= text_field :bill_graph, :price_from_grosze, :size=>2 %>
+          <%= text_field :bill_graph, 'price_from][grosze', :size=>2, :value=>'00' %>
         </td> 
         <td>
           Do:
         </td> 
         <td id="right">
-          <%= text_field :bill_graph, :price_to_calosc, :size=>5 %>
+          <%= text_field :bill_graph, 'price_to][calosc', :size=>5, :value=>'00' %>
         </td> 
         <td id="right">
           ,
         </td> 
         <td id="right">
-          <%= text_field :bill_graph, :price_to_grosze, :size=>2 %>
+          <%= text_field :bill_graph, 'price_to][grosze', :size=>2, :value=>'00' %>
         </td> 
       </tr>
       <tr>
-        <td>
+        <td colspan="19" id="right">
           <%= submit_tag 'Pokaż' %>
         </td> 
       </tr>
     </table>
   <% end -%>
-                    
+                      
 </div>
 <div id="bill_graph_data">
-  <h2>Wypełnij formularz aby zobaczyc statystyki</h2>
+  <h2>Wypełnij formularz aby zobaczyć statystyki.</h2>
 </div>

@@ -85,6 +85,70 @@ class GraphController < ApplicationController
     render :text => g.render
 
   end
+  def bill_graph_details
+    price_from = (params['bill_graph']['price_from']['calosc']+'.'+params['bill_graph']['price_from']['grosze']).to_f
+    price_to = (params['bill_graph']['price_to']['calosc']+'.'+params['bill_graph']['price_to']['grosze']).to_f
+    
+    year = params['bill_graph']['date_from(1i)']
+    year = "0#{year}" if year.to_i < 10
+    month = params['bill_graph']['date_from(2i)']
+    month = "0#{month}" if month.to_i < 10
+    day = params['bill_graph']['date_from(3i)']
+    day = "0#{day}" if day.to_i < 10
+    
+    date_from = "#{year}-#{month}-#{day} 00:00:00"
+    date = "#{year}-#{month}-#{day} - "
+    
+    year = params['bill_graph']['date_to(1i)']
+    year = "0#{year}" if year.to_i < 10
+    month = params['bill_graph']['date_to(2i)']
+    month = "0#{month}" if month.to_i < 10
+    day = params['bill_graph']['date_to(3i)']
+    day = "0#{day}" if day.to_i < 10
+    
+    date_to = "#{year}-#{month}-#{day} 24:00:00"
+    date += "#{year}-#{month}-#{day}"
+    
+    query = []
+    
+    
+    query << "price_summary >= '#{price_from}'" if price_from > 0
+    query << "price_summary <= '#{price_to}'" if price_to > 0
+    query << "spend_at >= '#{date_from}'"# unless date_from.eql?(Time.now.strftime('%Y/%m/%d'))
+    query << "spend_at <= '#{date_to}'"# unless date_to.eql?(Time.now.strftime('%Y/%m/%d'))
+      
+    query = query.join(' and ')
+    data = Bill.find_all_by_user_id session[:user_id], :conditions=>["#{query}"]
+    
+    price_table = []
+    date_table = []
+    max = 0
+    data.each do |bill|
+      price_table << bill.price_summary
+      date_table << get_date(bill.spend_at,"%Y/%m/%d")
+      max = bill.price_summary if bill.price_summary > max
+    end
+    
+    g = Graph.new
+    g.title( "Rachunki za okres #{} - #{date}", '{color: #7E97A6; font-size: 20; text-align: center}' )
+    g.set_bg_color('#b9fbd4')
+    g.set_data(price_table)
+    g.line_hollow( 2, 4, '#164166', 'Ile', 10 )
+    g.attach_to_y_right_axis(2)
+    g.set_y_max(max)
+    g.set_y_right_max(max)
+    g.set_x_axis_color('#818D9D', '#F0F0F0' )
+    g.set_y_axis_color( '#818D9D', '#ADB5C7' )
+    g.y_right_axis_color('#818D9D')
+    g.set_x_legend( 'Kiedy', 12, '#164166' )
+    g.set_y_legend( 'Ile', 12, '#164166' )
+    
+    g.set_x_labels(date_table)
+    g.set_x_label_style(10, '#164166', 2, 1, '#818D9D' )
+    g.set_y_label_steps(15)
+  
+    render :text => g.render
+  end
   def welcome
     g = Graph.new
     g.title( 'Sprawdź ile, jak często i na co wydajesz pieniądze!', '{color: #7E97A6; font-size: 20; text-align: center}' )
@@ -93,29 +157,12 @@ class GraphController < ApplicationController
     data = []
     (0..16).to_a.each do |x|
       data << 2*(x*x)-20*x + 55
-      #      if x % 2 == 0
-      #        data << x+400 
-      #      else
-      #        data << x+(x*20)
-      #      end
     end
     (17..20).to_a.each do |x|
-      #      data << x*2+450
       data << 2*(x*x) -20*x - 50
-      #      if x % 2 == 0
-      #        data << x+400 
-      #      else
-      #        data << x+(x*20)
-      #      end
     end
     (21..31).to_a.each do |x|
-      #      data << x*2+450
       data << (x*x) -20*x + 50
-      #      if x % 2 == 0
-      #        data << x+400 
-      #      else
-      #        data << x+(x*20)
-      #      end
     end
     g.set_data(data)
     g.line_hollow( 2, 4, '#164166', 'Ile', 10 )

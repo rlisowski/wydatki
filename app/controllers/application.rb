@@ -8,6 +8,9 @@ class ApplicationController < ActionController::Base
   # Uncomment the :secret if you're not using the cookie session store
   protect_from_forgery :secret => 'f9b96ef11a175222b63fb0f72cff2fa4qwerty'
   filter_parameter_logging(:login,:password)
+  def get_date(date,format="%Y/%m/%d %H:%M:%S")
+    Time.parse("#{date}").strftime(format)
+  end
   def login_required
     unless prepare_session
       flash[:notice]='Sesja wygasła.<br> Prosze zalogowac sie w systemie'

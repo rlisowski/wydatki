@@ -1,0 +1,1 @@
+page.replace_html  'bill_graph_data', :partial=>"bill_graph_details"

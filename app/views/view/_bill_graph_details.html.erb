@@ -1,0 +1,28 @@
+<div id="statistics">
+  <div id="statistics_table">
+    <table id="place_graph">
+      <tr >
+        <td>Rachunek</td>
+        <td>Suma</td>
+        <td>Miejce</td>
+        <td>Wydano</td>
+        <td>Dodano</td>
+        <td>Zmieniono</td>
+      </tr>
+      <% @data.each do |bill| %>
+        <tr >
+            <td><%=  bill.name %></td>
+            <td><%=  bill.price_summary %></td>
+            <td><%=  bill.place.name %></td>
+            <td><%=h get_date(bill.spend_at,"%Y/%m/%d") %></td>
+            <td><%=h get_date(bill.created_at,"%Y/%m/%d") %></td>
+            <td><%=h get_date(bill.updated_at,"%Y/%m/%d") %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <%#*<div id="graph">%>
+  <div >
+    <%= @graph %>
+  </div>
+</div>

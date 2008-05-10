@@ -50,6 +50,7 @@ class DataController < ApplicationController
   #  bill
   def save_bill
     params[:bill][:user_id] = session[:user_id]
+    params[:bill][:price_summary] = '0.0'
     @bill = Bill.new(params[:bill])
     if @bill.save
       @count=Bill.count_by_sql("select count(id) from bills where user_id='#{session[:user_id]}' ")
