@@ -16,7 +16,12 @@
         <div id="user_info">
           <table>
             <tr>
-              <td><b>użytkownik:</b></td>
+              <td><b>użytkownik:</b></td> 
+              <td rowspan="2">
+                <div id="load-indicator" style="display: none;">
+                  <%= image_tag('/images/indicator-ajax-loader.gif') %>
+                </div>
+              </td>
             </tr>
             <tr>
               <td id="user_name" ><%=session[:user_login]%></td>
@@ -34,27 +39,27 @@
         <div id="menu_left">
           <div id="button_rachunki">
             <%#= link_to image_tag('/images/button.png'), {:controller=>'view', :action=>'bills'}%>
-            <%= link_to_remote( image_tag('/images/button.png'), :url=> {:controller=>'view', :action=>'bills'})%>
+            <%= link_to_remote( image_tag('/images/button.png'), :url=> {:controller=>'view', :action=>'bills'}, :loading=>"Element.show('load-indicator')", :loaded=>"Element.hide('load-indicator')")%>
           </div>
           <div id="button_kategorie">
             <%#= link_to image_tag('/images/button.png'), {:controller=>'view', :action=>'categories'}%>
-            <%= link_to_remote( image_tag('/images/button.png'), :url=> {:controller=>'view', :action=>'categories'})%>
+            <%= link_to_remote( image_tag('/images/button.png'), :url=> {:controller=>'view', :action=>'categories'}, :loading=>"Element.show('load-indicator')", :loaded=>"Element.hide('load-indicator')")%>
           </div>
           <div id="button_miejsca">
             <%#= link_to image_tag('/images/button.png'), {:controller=>'view', :action=>'places'}%>
-            <%= link_to_remote( image_tag('/images/button.png'), :url=> {:controller=>'view', :action=>'places'})%>
+            <%= link_to_remote( image_tag('/images/button.png'), :url=> {:controller=>'view', :action=>'places'}, :loading=>"Element.show('load-indicator')", :loaded=>"Element.hide('load-indicator')")%>
           </div>
-          <div id="button_left">
+          <div id="button_statystyki">
             <%#= link_to image_tag('/images/button.png'), {:controller=>'view', :action=>'places'}%>
-            <%= link_to_remote( 'GRAPH', :url=> {:controller=>'view', :action=>'graphs'})%>
+            <%= link_to_remote( image_tag('/images/button.png'), :url=> {:controller=>'view', :action=>'graphs'}, :loading=>"Element.show('load-indicator')", :loaded=>"Element.hide('load-indicator')")%>
           </div>
         </div>        
         <div id="menu_right">
           <div id="button_o_mnie">
-            <%= link_to image_tag('/images/button.png'), {:controller=>'view', :action=>'abaut_me'}%>
+            <%= link_to(image_tag('/images/button.png'), {:controller=>'view', :action=>'abaut_me'}, :loading=>"Element.show('load-indicator')", :loaded=>"Element.hide('load-indicator')")%>
           </div>
           <div id="button_wyloguj">
-            <%= link_to image_tag('/images/button.png'), {:controller=>'authentication', :action=>'logout'}%>
+            <%= link_to(image_tag('/images/button.png'), {:controller=>'authentication', :action=>'logout'}, :loading=>"Element.show('load-indicator')", :loaded=>"Element.hide('load-indicator')")%>
           </div>
         </div>
       </div>

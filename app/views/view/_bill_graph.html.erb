@@ -1,6 +1,6 @@
 <div id="bill_graph_form">
   <%# form_remote_tag :url => '/posts' do -%>
-  <% form_remote_tag :url => {:controler=>'view', :action=>'bill_graph_details'} do -%>
+  <% form_remote_tag :url => {:controler=>'view', :action=>'bill_graph_details'}, :loading=>"Element.show('load-indicator')", :loaded=>"Element.hide('load-indicator')" do -%>
     <table>
       <tr>
         <td>
