@@ -13,7 +13,7 @@
         <tr >
             <td><%=  bill.name %></td>
             <td><%=  bill.price_summary %></td>
-            <td><%=  bill.place.name %></td>
+            <td><%=  bill.place.name if bill.place%></td>
             <td><%=h get_date(bill.spend_at,"%Y/%m/%d") %></td>
             <td><%=h get_date(bill.created_at,"%Y/%m/%d") %></td>
             <td><%=h get_date(bill.updated_at,"%Y/%m/%d") %></td>
