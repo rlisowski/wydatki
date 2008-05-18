@@ -4,9 +4,10 @@ class DataController < ApplicationController
   # bill_parts
   def save_bill_part
     params[:bill_part][:user_id] = session[:user_id]
-    params[:bill_part][:price] = params[:bill_part][:price].gsub(',','.')
-    params[:bill_part][:count] = params[:bill_part][:count].gsub(',','.')
-    params[:bill_part][:price_summary] = params[:bill_part][:count].to_f*params[:bill_part][:price].to_f
+#    params[:bill_part][:price] = round( params[:bill_part][:price].gsub(',','.'))
+#    params[:bill_part][:count] = round( params[:bill_part][:count].gsub(',','.'))
+#    params[:bill_part][:price_summary] = round( params[:bill_part][:count].to_f*params[:bill_part][:price].to_f )
+    
     @bill_part = BillPart.new(params[:bill_part])
     if @bill_part.save
       @count=BillPart.count_by_sql("select count(id) from bill_parts where bill_id='#{params[:bill_part][:bill_id]}'")
@@ -33,8 +34,9 @@ class DataController < ApplicationController
     return if request.xhr?
   end
   def update_bill_part
-    params[:bill_part][:price] = params[:bill_part][:price].gsub(',','.')
-    params[:bill_part][:price_summary] = params[:bill_part][:count].to_i*params[:bill_part][:price].to_f
+#    params[:bill_part][:price] = round( params[:bill_part][:price].gsub(',','.') )
+#    params[:bill_part][:count] = round( params[:bill_part][:count].gsub(',','.'))
+#    params[:bill_part][:price_summary] = round( params[:bill_part][:count].to_i*params[:bill_part][:price].to_f )
     @bill_part = BillPart.find(params[:bill_part][:id])
 #    params[:bill_part].delete(:id)
     @bill_part.update_attributes(params[:bill_part])

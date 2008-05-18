@@ -90,4 +90,13 @@ class ApplicationController < ActionController::Base
     end
     return array[rand(array.size)]
   end
+  def round(number = 0, place = 2)
+    sprintf("%.#{place}f", number)
+  end
+  def round_to_s(number = 0, place = 2)
+    round(number,place)
+  end
+  def round_to_f(number = 0, place = 2)
+    round(number,place).to_f
+  end
 end

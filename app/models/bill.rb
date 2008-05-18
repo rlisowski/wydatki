@@ -27,7 +27,7 @@ class Bill < ActiveRecord::Base
         sum += bp.price_summary
       end
     end
-    self.price_summary = sum
+    self.price_summary = round_to_f(sum)
     self.save
   end
 #  def price_summary

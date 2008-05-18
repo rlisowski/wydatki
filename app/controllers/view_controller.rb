@@ -49,7 +49,7 @@ class ViewController < ApplicationController
     places.each do |place|
       count =  Bill.count('id',:conditions=>["place_id = ?",place.id]) 
       if count!=0
-        @data << [place.name, count, all, format("%.2f",(count.to_f/all.to_f)*100)]
+        @data << [place.name, count, all, round((count.to_f/all.to_f)*100)]
       end
     end
     
@@ -66,7 +66,7 @@ class ViewController < ApplicationController
     categories.each do |category|
       count =  BillPart.count('id',:conditions=>["category_id = ?",category.id]) 
       if count!=0
-        @data << [category.name, count, all, format("%.2f",(count.to_f/all.to_f)*100)]
+        @data << [category.name, count, all, round((count.to_f/all.to_f)*100)]
       end
     end
     
